@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <title>CD Inventory</title>
+  </head>
+  <body>
+      <h1>CD Inventory</h1>
+      <h2>Enter a new CD:</h2>
+    <div class="container">
+      <form method="post" action="/postcd">
+        <input type="text" name="artist" placeholder="Enter new CD artist">
+        <input type="text" name="title" placeholder="Enter new CD title">
+        <input type="text" name="price" placeholder="Enter new CD price">
+        <input type="text" name="genre" placeholder="Enter new CD genre">
+        <input type="submit">Submit new CD</button>
+      </form>
+      {% if cds is not empty %}
+        {% for cd in cds %}
+          <h4>{{ cd.getTitle }} by {{ cd.getArtist }}</h4>
+          <p>price: {{ cd.getPrice }}</p>
+          <p>genre: {{ cd.getGenre }}</p>
+        {% endfor %}
+      {% endif %}
+      <form action="/empty_inventory">
+        <button type="submit">Empty Inventory</button>
+      </form>
+    </div>
+  </body>
+</html>
